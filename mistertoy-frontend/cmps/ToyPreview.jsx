@@ -15,13 +15,13 @@ export function ToyPreview({ toy }) {
             {/* <h1>{toys}</h1> */}
             <h1>{symbol}</h1>
             <Link to={`/toy/${toy._id}`}>
-                {/* <article className="toy-preview">
-                    <h1 className="toy-name">{toy.name}</h1>
-                    <h1>Price: ${toy.price}</h1>
-                    <h1>
+                <article className="toy-preview">
+                    <p className="toy-name">{toy.txt}</p>
+                    <p>Price: ${toy.price}</p>
+                    <p>
                         {toy.inStock ? 'In stock' : 'Not in stock'}
-                    </h1>
-                </article> */}
+                    </p>
+                </article>
             </Link>
         </div>
     )
