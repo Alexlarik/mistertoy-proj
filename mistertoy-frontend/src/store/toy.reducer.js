@@ -1,4 +1,4 @@
-import { toyService } from '../services/toy.service.js'
+import { toyService } from '../services/toy.service'
 
 export const SET_TOYS = 'SET_TOYS'
 export const SET_FILTER_BY = 'SET_FILTER_BY'

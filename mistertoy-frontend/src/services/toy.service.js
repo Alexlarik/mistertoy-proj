@@ -50,12 +50,12 @@ function save(toy) {
     }
 }
 
-function getToy(txt = '') {
-    return { txt, price, inStock }
+function getToy() {
+    return { txt: '', price: '', inStock: '' }
 }
 
 function getDefaultFilter() {
-    return { txt: '', price, inStock }
+    return { txt: '', price: '', inStock: '' }
 }
 
 function _createToys() {
