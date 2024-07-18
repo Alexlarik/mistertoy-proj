@@ -39,10 +39,10 @@ export function ToyIndex() {
         const toysToSave = toyService.getToy()
         saveToy(toysToSave)
             .then((savedToy) => {
-                showSuccessMsg(`Car added (id: ${savedToy._id})`)
+                showSuccessMsg(`toy added (id: ${savedToy._id})`)
             })
             .catch(err => {
-                showErrorMsg('Cannot add car')
+                showErrorMsg('Cannot add toy')
             })
     }
 
@@ -50,7 +50,7 @@ export function ToyIndex() {
         <main>
             <h3>Toys App</h3>
             <main>
-                <button onClick={onAddToy}>Add Toy🧸🔫🪀</button>
+                <button onClick={onAddToy}>Add Toy:🧸🔫🪀</button>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
             </main>
         </main>
