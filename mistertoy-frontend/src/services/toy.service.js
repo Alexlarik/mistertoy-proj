@@ -45,6 +45,9 @@ function save(toy) {
         return storageService.put(TOY_KEY, toy)
     } else {
         toy.createdAt = toy.updatedAt = Date.now()
+        toy.txt = utilService.makeLorem(1)
+        toy.price = utilService.getRandomIntInclusive(5, 80)
+        toy.inStock = toy.inStock ? 'inStock' : 'not'
 
         return storageService.post(TOY_KEY, toy)
     }
@@ -76,9 +79,11 @@ function _createToys() {
 
 function _createToy(txt, price, inStock) {
     const toy = getToy(txt, price, inStock)
+    toy.txt = utilService.makeLorem(1)
+    toy.price = utilService.getRandomIntInclusive(5, 80)
+    toy.inStock = inStock ? 'inStock' : 'not'
     toy._id = utilService.makeId()
     toy.createdAt = toy.updatedAt = Date.now() - utilService.getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
-
     return toy
 }
 
