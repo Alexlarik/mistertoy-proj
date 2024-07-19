@@ -3,7 +3,9 @@ import { SET_TOYS, UPDATE_TOY, ADD_TOY, REMOVE_TOY, SET_FILTER_BY } from './toy.
 import { store } from './store.js'
 
 
-export function loadToys(filterBy) {
+export function loadToys() {
+    const filterBy = store.getState().x.filterBy
+
     return toyService.query(filterBy)
         .then(toys => {
             console.log('Loaded toys:', toys)

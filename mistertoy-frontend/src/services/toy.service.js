@@ -23,6 +23,13 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 toys = toys.filter(toy => regExp.test(toy.txt))
             }
+            if (filterBy.inStock !== '') {
+                toys = toys.filter(toy => {
+                    if (filterBy.inStock === 'true') return toy.inStock === true
+                    if (filterBy.inStock === 'false') return toy.inStock === false
+                    return true
+                })
+            }
             return toys
         })
 }
@@ -47,7 +54,7 @@ function save(toy) {
         toy.createdAt = toy.updatedAt = Date.now()
         toy.txt = utilService.makeLorem(1)
         toy.price = utilService.getRandomIntInclusive(5, 80)
-        toy.inStock = toy.inStock ? 'inStock' : 'not'
+        toy.inStock = toy.inStock ? true : false
 
         return storageService.post(TOY_KEY, toy)
     }
@@ -67,7 +74,8 @@ function _createToys() {
         toys = []
         const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
         for (var i = 0; i < 20; i++) {
-            toys.push(_createToy())
+            // toys.push(_createToy())
+            toys.push(_createToy(null, null, Math.random() > 0.5))
         }
         // for (let i = 0; i < 20; i++) {
         //     const toy = toys[utilService.getRandomIntInclusive(0, txts.length - 1)]
@@ -81,7 +89,7 @@ function _createToy(txt, price, inStock) {
     const toy = getToy(txt, price, inStock)
     toy.txt = utilService.makeLorem(1)
     toy.price = utilService.getRandomIntInclusive(5, 80)
-    toy.inStock = inStock ? 'inStock' : 'not'
+    toy.inStock = inStock ? true : false
     toy._id = utilService.makeId()
     toy.createdAt = toy.updatedAt = Date.now() - utilService.getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
     return toy

@@ -5,6 +5,8 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { toyService } from '../services/toy.service'
 import { removeToy, saveToy } from '../store/toy.actions'
 import { ToyList } from '../../cmps/ToyList.jsx'
+import { ToyFilter } from '../../cmps/ToyFilter.jsx'
+import { SET_FILTER_BY } from '../store/toy.reducer.js'
 
 export function ToyIndex() {
     console.log('test')
@@ -19,10 +21,9 @@ export function ToyIndex() {
             })
     }, [filterBy])
 
-    // function onSetFilter(filterBy) {
-    //     setFilterBy(filterBy)
-    // }
-
+    function setFilterBy(filterBy) {
+        dispatch({ type: SET_FILTER_BY, filterBy })
+    }
 
     function onRemoveToy(toyId) {
         removeToy(toyId)
@@ -48,7 +49,8 @@ export function ToyIndex() {
 
     return (
         <main>
-            <h3>Toys App</h3>
+            <h2>Toys App</h2>
+            <ToyFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
             <main>
                 <button onClick={onAddToy}>Add Toy:🧸🔫🪀</button>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
