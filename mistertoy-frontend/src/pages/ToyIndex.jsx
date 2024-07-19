@@ -9,7 +9,7 @@ import { ToyFilter } from '../../cmps/ToyFilter.jsx'
 import { SET_FILTER_BY } from '../store/toy.reducer.js'
 
 export function ToyIndex() {
-    console.log('test')
+    // console.log('test')
     const toys = useSelector(state => state.x.toys)
     const filterBy = useSelector(state => state.x.filterBy)
     const dispatch = useDispatch()
