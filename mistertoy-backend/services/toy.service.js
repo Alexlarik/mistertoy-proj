@@ -1,5 +1,5 @@
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
+// import { storageService } from './async-storage.service.js'
 
 // _createToys()
 
@@ -14,7 +14,7 @@ export const toyService = {
 }
 const toys = utilService.readJsonFile('data/toy.json')
 // For Debug (easy access from console):
-window.cs = toyService
+// window.cs = toyService
 
 function query(filterBy = {}) {
     let filteredToys = toys

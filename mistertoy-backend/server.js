@@ -1,10 +1,11 @@
 import path from 'path'
 import express from 'express'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 import { toyService } from './services/toy.service.js'
 import { loggerService } from './services/logger.service.js'
-import { utilService } from './services/util.service.js'
+// import { utilService } from './services/util.service.js'
 
 const app = express()
 const corsOptions = {
