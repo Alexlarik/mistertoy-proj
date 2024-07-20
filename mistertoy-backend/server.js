@@ -63,11 +63,14 @@ app.post('/api/toy/', (req, res) => {
         txt,
         price: +price,
     }
+    console.log('Received new toy data:', toy)
     toyService.save(toy)
         .then(savedToy => {
+            console.log('Toy saved:', savedToy)
             res.send(savedToy)
         })
         .catch(err => {
+            console.log('Error saving toy:', err)
             loggerService.error('Cannot add toy', err)
             res.status(400).send('Cannot add toy')
         })
@@ -86,12 +89,14 @@ app.get('/api/toy/:id', (req, res) => {
 })
 
 app.delete('/api/toy/:id', (req, res) => {
-    const { toyId } = req.params
+    const { id: toyId } = req.params
     toyService.remove(toyId)
         .then(msg => {
+            console.log('Toy deleted:', msg)
             res.send({ msg, toyId })
         })
         .catch(err => {
+            console.log('Error deleting toy:', err)
             loggerService.error('Cannot delete toy', err)
             res.status(400).send('Cannot delete toy, ' + err)
         })

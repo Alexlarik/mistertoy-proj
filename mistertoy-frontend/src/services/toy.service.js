@@ -33,12 +33,22 @@ function get(toyId) {
 
 function remove(toyId) {
     return httpService.delete(BASE_URL + toyId)
+        .then(response => {
+            console.log('Toy deleted:', response)
+            return response
+        })
+        .catch(err => {
+            console.log('Error deleting toy:', err)
+            throw err
+        })
 }
 
 function save(toy) {
     if (toy._id) {
-        return httpService.put(BASE_URL, toy)
+        // console.log('Updating toy:', toy)
+        return httpService.put(BASE_URL + toy._id, toy)
     } else {
+        // console.log('Creating new toy:', toy)
         return httpService.post(BASE_URL, toy)
     }
 }

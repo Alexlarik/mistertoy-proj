@@ -42,22 +42,25 @@ function get(toyId) {
 function remove(toyId) {
     const idx = toys.findIndex(toy => toy._id === toyId)
     if (idx === -1) return Promise.reject('No such toy')
-    toys.splice(idx, 1)
-    return _saveToysToFile()
+    const removedToy = toys.splice(idx, 1)
+    console.log('Removed toy:', removedToy)
+    return _saveToysToFile().then(() => `Toy ${toyId} deleted successfully`)
 }
 
 function save(toy) {
     if (toy._id) {
-        // TOY - updatable fields
-        toy.updatedAt = Date.now()
-        // return storageService.put(TOY_KEY, toy)
+        const idx = toys.findIndex(t => t._id === toy._id);
+        if (idx === -1) return Promise.reject('Toy not found')
+        toys[idx] = { ...toys[idx], ...toy, updatedAt: Date.now() }
+        console.log('Updated toy:', toys[idx])
     } else {
+        toy._id = utilService.makeId()
         toy.createdAt = toy.updatedAt = Date.now()
         toy.txt = utilService.makeLorem(1)
         toy.price = utilService.getRandomIntInclusive(5, 80)
         toy.inStock = toy.inStock ? true : false
-
-        // return storageService.post(TOY_KEY, toy)
+        toys.push(toy)
+        console.log('Created new toy:', toy)
     }
     return _saveToysToFile().then(() => toy)
 }
@@ -104,6 +107,7 @@ function _saveToysToFile() {
             if (err) {
                 return console.log(err)
             }
+            console.log('Toys saved to file')
             resolve()
         })
     })
