@@ -7,9 +7,10 @@ import { loggerService } from './services/logger.service.js'
 import { utilService } from './services/util.service.js'
 
 const app = express()
-// app.use(express.static('public'))
+app.use(express.static('public'))
 app.use(cookieParser())
 app.use(express.json())
+app.use(cors(corsOptions))
 
 // Express Routing:
 

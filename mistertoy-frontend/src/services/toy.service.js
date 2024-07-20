@@ -1,8 +1,13 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
+// import Axios from "axios"
 
-const TOY_KEY = 'toyDB'
-_createToys()
+// const axios = Axios.create({
+//     withCredentials: true
+// })
+// const BASE_URL = ''
+// const TOY_KEY = 'toyDB'
+// _createToys()
 
 export const toyService = {
     query,
@@ -17,46 +22,22 @@ export const toyService = {
 window.cs = toyService
 
 function query(filterBy = {}) {
-    return storageService.query(TOY_KEY)
-        .then(toys => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                toys = toys.filter(toy => regExp.test(toy.txt))
-            }
-            if (filterBy.inStock !== '') {
-                toys = toys.filter(toy => {
-                    if (filterBy.inStock === 'true') return toy.inStock === true
-                    if (filterBy.inStock === 'false') return toy.inStock === false
-                    return true
-                })
-            }
-            return toys
-        })
+    return httpService.get(BASE_URL, { filterBy })
 }
 
 function get(toyId) {
-    return storageService.get(TOY_KEY, toyId)
-        .then(toy => {
-            return toy
-        })
+    return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
-    return storageService.remove(TOY_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
     if (toy._id) {
-        // TOY - updatable fields
-        toy.updatedAt = Date.now()
-        return storageService.put(TOY_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        toy.createdAt = toy.updatedAt = Date.now()
-        toy.txt = utilService.makeLorem(1)
-        toy.price = utilService.getRandomIntInclusive(5, 80)
-        toy.inStock = toy.inStock ? true : false
-
-        return storageService.post(TOY_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
 
