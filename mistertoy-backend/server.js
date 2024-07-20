@@ -101,5 +101,7 @@ app.get('/**', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
 })
 
-const PORT = process.env.PORT || 3030
-app.listen(PORT, () => loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`))
+const PORT = 3030
+app.listen(PORT, () => {
+    loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`)
+})
