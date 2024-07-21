@@ -5,7 +5,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     animateCSS,
-    debounce
+    debounce,
+    getRandomLabel
 }
 
 function makeId(length = 6) {
@@ -68,4 +69,10 @@ function debounce(func, timeout = 300) {
             func.apply(this, args)
         }, timeout)
     }
+}
+
+function getRandomLabel() {
+    const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
+    const randomIndex = Math.floor(Math.random() * labels.length)
+    return labels[randomIndex]
 }

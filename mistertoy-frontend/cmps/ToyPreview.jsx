@@ -21,6 +21,7 @@ export function ToyPreview({ toy }) {
                     <p>
                         {toy.inStock ? 'In stock' : 'Not in stock'}
                     </p>
+                    <p>Label: {toy.label}</p>
                 </article>
             </Link>
         </div>

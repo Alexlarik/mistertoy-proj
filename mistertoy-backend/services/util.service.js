@@ -8,7 +8,8 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     readJsonFile,
-    writeJsonFile
+    writeJsonFile,
+    getRandomLabel
 }
 function readJsonFile(path) {
     const str = fs.readFileSync(path, 'utf8')
@@ -52,4 +53,10 @@ function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
+}
+
+function getRandomLabel() {
+    const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
+    const randomIndex = Math.floor(Math.random() * labels.length)
+    return labels[randomIndex]
 }

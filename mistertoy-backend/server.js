@@ -41,11 +41,12 @@ app.get('/api/toy', (req, res) => {
 })
 
 app.put('/api/toy/:id', (req, res) => {
-    const { txt, price, _id } = req.body
+    const { txt, price, _id, label } = req.body
     const toy = {
         txt,
         price: +price,
         _id,
+        label
     }
     toyService.save(toy)
         .then(savedToy => {
@@ -58,10 +59,11 @@ app.put('/api/toy/:id', (req, res) => {
 })
 
 app.post('/api/toy/', (req, res) => {
-    const { txt, price } = req.body
+    const { txt, price, label } = req.body
     const toy = {
         txt,
         price: +price,
+        label
     }
     console.log('Received new toy data:', toy)
     toyService.save(toy)

@@ -59,6 +59,7 @@ function save(toy) {
         toy.txt = utilService.makeLorem(1)
         toy.price = utilService.getRandomIntInclusive(5, 80)
         toy.inStock = toy.inStock ? true : false
+        toy.label = utilService.getRandomLabel()
         toys.push(toy)
         console.log('Created new toy:', toy)
     }
@@ -66,11 +67,11 @@ function save(toy) {
 }
 
 function getToy() {
-    return { txt: '', price: '', inStock: '' }
+    return { txt: '', price: '', inStock: '', label: '' }
 }
 
 function getDefaultFilter() {
-    return { txt: '', price: '', inStock: '' }
+    return { txt: '', price: '', inStock: ''}
 }
 
 function _createToys() {
@@ -97,6 +98,7 @@ function _createToy(txt, price, inStock) {
     toy.inStock = inStock ? true : false
     toy._id = utilService.makeId()
     toy.createdAt = toy.updatedAt = Date.now() - utilService.getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
+    toy.label = utilService.getRandomLabel()
     return toy
 }
 

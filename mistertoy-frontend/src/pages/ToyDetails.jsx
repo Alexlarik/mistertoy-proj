@@ -37,6 +37,7 @@ export function ToyDetails() {
                         <h1 className="toy-name">{toy.txt}</h1>
                         <h1>Price: ${toy.price}</h1>
                         <h1>{toy.inStock ? 'In stock' : 'Not in stock'}</h1>
+                        <h1>Label: {toy.label}</h1>
                     </section>
                 </li>
             </ul>

@@ -54,7 +54,7 @@ function save(toy) {
 }
 
 function getToy() {
-    return { txt: '', price: '', inStock: '' }
+    return { txt: '', price: '', inStock: '', label: '' }
 }
 
 function getDefaultFilter() {
@@ -85,6 +85,7 @@ function _createToy(txt, price, inStock) {
     toy.inStock = inStock ? true : false
     toy._id = utilService.makeId()
     toy.createdAt = toy.updatedAt = Date.now() - utilService.getRandomIntInclusive(0, 1000 * 60 * 60 * 24)
+    toy.label = utilService.getRandomLabel()
     return toy
 }
 
