@@ -1,5 +1,5 @@
-import { toyService } from '../services/toy.service'
-// import { toyService } from '../services/toy.service.local'
+// import { toyService } from '../services/toy.service'
+import { toyService } from '../services/toy.service.local'
 
 export const SET_TOYS = 'SET_TOYS'
 export const SET_FILTER_BY = 'SET_FILTER_BY'

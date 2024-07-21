@@ -3,13 +3,13 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 import { ToyIndex } from './pages/ToyIndex.jsx'
 import { AppHeader } from '../cmps/AppHeader.jsx'
+import { Home } from './pages/Home.jsx'
+import { About } from './pages/About.jsx'
 
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 // import { AppFooter } from './cmps/AppFooter.jsx'
-// import { Home } from './pages/Home.jsx'
-// import { BugDetails } from './pages/BugDetails.jsx'
-// import { AboutUs } from './pages/AboutUs.jsx'
+
 
 export function App() {
     return (
@@ -19,12 +19,11 @@ export function App() {
                     <AppHeader />
                     <main>
                         <Routes>
-                            {/* <Route path="/" element={<Home />} /> */}
+                            <Route element={<Home />} path="/" />
                             <Route element={<ToyIndex />} path="/toy" />
                             <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />
                             <Route element={<ToyDetails />} path="/toy/:toyId" />
-                            {/* <Route path="/bug/:bugId" element={<BugDetails />} />
-                        <Route path="/about" element={<AboutUs />} /> */}
+                            <Route element={<About />} path="/about" />
                         </Routes>
                     </main>
                     {/* <AppFooter /> */}
