@@ -9,25 +9,6 @@ export function ToyDetails() {
     const toys = useSelector(state => state.x.toys)
     const { toyId } = useParams()
     const toy = toys.find(toy => toy._id === toyId)
-    // const [toy, setToy] = useState(null)
-    // const { toyId } = useParams()
-    // const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     loadToy()
-    // }, [toyId])
-
-    // function loadToy() {
-    //     toyService.get(toyId)
-    //         .then(toy => setToy(toy))
-    //         .catch(err => {
-    //             console.log('Had issues in toy details', err)
-    //             showErrorMsg('Cannot load toy')
-    //             navigate('/toy')
-    //         })
-    // }
-
-    // if (!toys) return <Loader />
 
     return (
         <section className="toy-details" style={{ textAlign: 'center' }}>
