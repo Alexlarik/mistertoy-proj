@@ -1,0 +1,29 @@
+$clr1: lightsteelblue;
+$clr2: white;
+$clr3:#646cff;
+$layoutPadding: 20px;
+$break-narrow: 1200px;
+$break-normal: 1360px;
+$break-wide: 1920px;
+
+@mixin for-narrow-layout {
+    @media (min-width: $break-narrow) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (min-width: $break-normal) {
+        @content;
+    }
+}
+
+@mixin for-wide-layout {
+    @media (min-width: $break-wide) {
+        @content;
+    }
+}
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

@@ -16,7 +16,7 @@ export function ToyPreview({ toy }) {
             <h1>{symbol}</h1>
             <Link to={`/toy/${toy._id}`}>
                 <article className="toy-preview">
-                    <p className="toy-name">{toy.txt}</p>
+                    <p className="toy-name">Name: {toy.txt}</p>
                     <p>Price: ${toy.price}</p>
                     <p>
                         {toy.inStock ? 'In stock' : 'Not in stock'}

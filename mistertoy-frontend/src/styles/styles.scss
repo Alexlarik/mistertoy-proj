@@ -1,0 +1,72 @@
+body {
+    background-color: $clr1;
+    display: grid;
+    grid-template-columns: $layoutPadding 1fr $layoutPadding;
+
+    >* {
+        grid-column: 2;
+    }
+
+    @include for-narrow-layout {
+        grid-template-columns:
+            minmax($layoutPadding, 1fr) minmax(auto, $break-narrow) minmax($layoutPadding, 1fr)
+    }
+
+    @include for-normal-layout() {
+        grid-template-columns:
+            minmax($layoutPadding, 1fr) minmax(auto, $break-normal) minmax($layoutPadding, 1fr)
+    }
+
+    @include for-wide-layout() {
+        grid-template-columns:
+            minmax($layoutPadding, 1fr) minmax(auto, $break-wide) minmax($layoutPadding, 1fr)
+    }
+
+
+}
+
+.toys-list {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 20px;
+    background-color: $clr2;
+    border: solid;
+}
+
+.toy-details,
+.toys-list {
+    list-style: none;
+
+}
+
+.home-page {
+    font-size: 25px;
+    background-color: $clr2;
+    border: solid;
+    margin: 25px;
+}
+
+button {
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin: 5px;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+a {
+    color: $clr3;
+    text-decoration: inherit;
+}
+
+// a:hover {
+//     color: $clr3;
+// }
