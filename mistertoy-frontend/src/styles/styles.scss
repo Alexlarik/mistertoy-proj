@@ -3,6 +3,7 @@ body {
     display: grid;
     grid-template-columns: $layoutPadding 1fr $layoutPadding;
 
+
     >* {
         grid-column: 2;
     }
@@ -31,6 +32,9 @@ body {
     gap: 20px;
     background-color: $clr2;
     border: solid;
+    padding: $layoutPadding;
+    margin: 0;
+    width: 100%;
 }
 
 .toy-details,
@@ -44,6 +48,21 @@ body {
     background-color: $clr2;
     border: solid;
     margin: 25px;
+
+    p {
+        text-align: center;
+    }
+}
+
+.only-map {
+    border: solid;
+}
+
+.dashboard {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 button {
@@ -65,6 +84,45 @@ h1 {
 a {
     color: $clr3;
     text-decoration: inherit;
+}
+
+.app-header,
+.toy-filter-full-main-layout,
+.toy-app-layout>*,
+.about-page-panel {
+    @include main-center-layout;
+}
+
+// .toy-filter-full-main-layout{
+
+// }
+
+.app-header {
+    font-size: 30px;
+}
+
+.branch-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.link-white {
+    color: $clr2;
+}
+
+.toy-preview {
+    text-align: center;
+
+}
+
+.toy-preview:hover {
+    transition: 1s;
+    background-color: $clr1;
+}
+
+footer {
+    margin: 30px;
 }
 
 // a:hover {

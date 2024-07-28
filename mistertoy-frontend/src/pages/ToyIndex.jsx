@@ -8,6 +8,7 @@ import { removeToy, saveToy } from '../store/toy.actions'
 import { ToyList } from '../../cmps/ToyList.jsx'
 import { ToyFilter } from '../../cmps/ToyFilter.jsx'
 import { SET_FILTER_BY } from '../store/toy.reducer.js'
+import { Button } from '@mui/material'
 
 export function ToyIndex() {
     // console.log('test')
@@ -49,13 +50,21 @@ export function ToyIndex() {
     }
 
     return (
-        <main>
-            <h2>Toys App</h2>
+        <main className="toy-app-layout">
+            <h1>Toys App</h1>
             <ToyFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
             <main>
-                <button onClick={onAddToy}>Add Toy:🧸🔫🪀</button>
+                <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={onAddToy}>Add Toy:🧸🔫🪀</Button>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
             </main>
+            <footer>
+                @cofferights
+                <p>Lorem ipsum dolor sit amet</p>
+            </footer>
         </main>
     )
 }
+
+{/* <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+Learn More
+</Button> */}

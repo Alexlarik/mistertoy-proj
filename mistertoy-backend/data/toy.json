@@ -97,5 +97,14 @@
         "updatedAt": 1722113447168,
         "createdAt": 1722113447168,
         "inStock": false
+    },
+    {
+        "txt": ". ",
+        "price": 19,
+        "label": "On wheels",
+        "_id": "F4pPW1",
+        "updatedAt": 1722192542151,
+        "createdAt": 1722192542151,
+        "inStock": false
     }
 ]

@@ -56,8 +56,10 @@ export function Dashboard() {
 
     return (
         <>
-            <Pie data={data} />
-            <Line data={data} />
+            <section className='dashboard'>
+                <Pie data={data} />
+                <Line data={data} />
+            </section>
         </>
     )
 }

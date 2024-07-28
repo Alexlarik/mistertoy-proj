@@ -1,5 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { utilService } from '../src/services/util.service'
+import { TextField, FormControl, InputLabel, Select, MenuItem, Box, Typography } from '@mui/material'
+
+
 
 export function ToyFilter({ filterBy, onSetFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
@@ -19,30 +22,38 @@ export function ToyFilter({ filterBy, onSetFilterBy }) {
     }
 
     return (
-        <section className="toy-filter-full-main-layout">
-            <h3>Toys Filter</h3>
+        <Box className="toy-filter-full-main-layout" sx={{ p: 3 }}>
+            <Typography variant="h5" gutterBottom>
+                Toys Filter
+            </Typography>
             <form>
-                <label htmlFor="name">Name:</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="txt"
-                    placeholder="By Name"
-                    value={filterByToEdit.txt}
-                    onChange={handleChange}
-                />
-                <label htmlFor="inStock">In Stock:</label>
-                <select
-                    id="inStock"
-                    name="inStock"
-                    value={filterByToEdit.inStock === true ? 'true' : filterByToEdit.inStock === false ? 'false' : ''}
-                    onChange={handleChange}
-                >
-                    <option value="">All</option>
-                    <option value="true">In Stock</option>
-                    <option value="false">Out of Stock</option>
-                </select>
+                <FormControl fullWidth sx={{ mb: 2, backgroundColor: 'white' }}>
+                    <TextField
+                        label="Name"
+                        id="name"
+                        name="txt"
+                        placeholder="By Name"
+                        value={filterByToEdit.txt}
+                        onChange={handleChange}
+                        variant="outlined"
+                    />
+                </FormControl>
+                <FormControl fullWidth variant="outlined" sx={{ backgroundColor: 'white' }}>
+                    <InputLabel id="inStock-label">In Stock</InputLabel>
+                    <Select
+                        labelId="inStock-label"
+                        id="inStock"
+                        name="inStock"
+                        value={filterByToEdit.inStock === true ? 'true' : filterByToEdit.inStock === false ? 'false' : ''}
+                        onChange={handleChange}
+                        label="In Stock"
+                    >
+                        <MenuItem value=""><em>All</em></MenuItem>
+                        <MenuItem value="true">In Stock</MenuItem>
+                        <MenuItem value="false">Out of Stock</MenuItem>
+                    </Select>
+                </FormControl>
             </form>
-        </section>
+        </Box>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import GoogleMapReact from 'google-map-react'
+import { Button } from "@mui/material"
 
 const AnyReactComponent = ({ text }) => <div style={{ fontSize: '3em' }}>{text}</div>
 const API_KEY = ""
@@ -51,19 +52,21 @@ export function Map() {
     return (
 
         <div className="map-info">
-            {branches.map(branch => {
-                return (
-                    <button
-                        className={branch.id === selectedBranch?.id ? 'selected' : ''}
-                        key={branch.city}
-                        onClick={() => onSelectBranch(branch)}
-                    >
-                        {branch.city}
-                    </button>
-                )
-            })}
+            <div className="branch-buttons">
+                {branches.map(branch => {
+                    return (
+                        <Button variant="contained" color="primary" sx={{ mt: 2 }}
+                            className={branch.id === selectedBranch?.id ? 'selected' : ''}
+                            key={branch.city}
+                            onClick={() => onSelectBranch(branch)}
+                        >
+                            {branch.city}
+                        </Button>
+                    )
+                })}
+            </div>
 
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div className="only-map" style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: API_KEY }}
                     // defaultCenter={coordinates}
@@ -81,3 +84,7 @@ export function Map() {
         </div>
     )
 }
+
+{/* <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+Learn More
+</Button> */}
