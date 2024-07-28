@@ -44,7 +44,7 @@ export function Dashboard() {
     const toys = useSelector(state => state.x.toys)
 
     if (toys.length === 0) {
-        return <div>No toys available yet,add some toys!!!</div>
+        return <div className='warning-dashboard'>No toys available yet,add some toys!!!</div>
     }
 
     const labelCountsMap = {}
@@ -59,6 +59,7 @@ export function Dashboard() {
             <section className='dashboard'>
                 <Pie data={data} />
                 <Line data={data} />
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, veritatis.</p>
             </section>
         </>
     )

@@ -23,8 +23,8 @@ export function ToyFilter({ filterBy, onSetFilterBy }) {
 
     return (
         <Box className="toy-filter-full-main-layout" sx={{ p: 3 }}>
-            <Typography variant="h5" gutterBottom>
-                Toys Filter
+            <Typography variant="h5" gutterBottom sx={{ color: 'black' }}>
+                Filter:
             </Typography>
             <form>
                 <FormControl fullWidth sx={{ mb: 2, backgroundColor: 'white' }}>

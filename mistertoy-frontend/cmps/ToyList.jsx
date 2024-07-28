@@ -11,7 +11,7 @@ export function ToyList({ onRemoveToy }) {
             {toys.map(toy =>
                 <li key={toy._id}>
                     <ToyPreview toy={toy} />
-                    <section>
+                    <section className='toy-functions'>
                         {/* <span>🔫</span> */}
                         <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={() => onRemoveToy(toy._id)}>Remove</Button>
                         <Button variant="contained" color="primary" sx={{ mt: 2 }}><Link to={`/toy/${toy._id} `} className="link-white">Details</Link></Button>
