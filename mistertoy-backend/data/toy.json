@@ -70,41 +70,5 @@
         "updatedAt": 1722113101578,
         "createdAt": 1722113101578,
         "inStock": false
-    },
-    {
-        "txt": "from various people ",
-        "price": 21,
-        "label": "Doll",
-        "_id": "OknZ85",
-        "updatedAt": 1722113447168,
-        "createdAt": 1722113447168,
-        "inStock": false
-    },
-    {
-        "txt": ". ",
-        "price": 19,
-        "label": "On wheels",
-        "_id": "F4pPW1",
-        "updatedAt": 1722192542151,
-        "createdAt": 1722192542151,
-        "inStock": false
-    },
-    {
-        "txt": "I ",
-        "price": 72,
-        "label": "Art",
-        "_id": "RMecev",
-        "updatedAt": 1722203270868,
-        "createdAt": 1722203270868,
-        "inStock": false
-    },
-    {
-        "txt": "from various people ",
-        "price": 34,
-        "label": "On wheels",
-        "_id": "6PEVah",
-        "updatedAt": 1722203271175,
-        "createdAt": 1722203271175,
-        "inStock": false
     }
 ]

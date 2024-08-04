@@ -31,16 +31,15 @@ function get(toyId) {
     return httpService.get(BASE_URL + toyId)
 }
 
-function remove(toyId) {
-    return httpService.delete(BASE_URL + toyId)
-        .then(response => {
-            console.log('Toy deleted:', response)
-            return response
-        })
-        .catch(err => {
-            console.log('Error deleting toy:', err)
-            throw err
-        })
+async function remove(toyId) {
+    try {
+        const response = await httpService.delete(BASE_URL + toyId)
+        console.log('Toy deleted:', response)
+        return response;
+    } catch (err) {
+        console.log('Error deleting toy:', err)
+        throw err
+    }
 }
 
 function save(toy) {
