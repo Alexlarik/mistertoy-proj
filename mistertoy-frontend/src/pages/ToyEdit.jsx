@@ -17,23 +17,22 @@ export function ToyEdit() {
     const [price, setPrice] = useState(toy ? toy.price : '')
     const [inStock, setInStock] = useState(toy ? toy.inStock === 'inStock' : false)
 
-    function handleSave() {
+    async function handleSave() {
         const updatedToy = {
             ...toy,
             txt: name,
             price: +price,
             inStock: inStock ? 'inStock' : 'not'
         }
-
-        toyService.save(updatedToy)
-            .then(() => {
-                showSuccessMsg('toy updated successfully')
-                navigate(`/toy/${toy._id}`)
-            })
-            .catch(err => {
-                console.log('had issues saving toy', err)
-                showErrorMsg('cannot update toy')
-            })
+    
+        try {
+            await toyService.save(updatedToy)
+            showSuccessMsg('toy updated successfully')
+            navigate(`/toy/${toy._id}`)
+        } catch (err) {
+            console.log('had issues saving toy', err)
+            showErrorMsg('cannot update toy')
+        }
     }
     return (
         <section className="toy-edit" style={{ textAlign: 'center' }}>

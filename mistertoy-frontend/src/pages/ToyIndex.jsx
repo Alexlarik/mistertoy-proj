@@ -28,26 +28,24 @@ export function ToyIndex() {
         dispatch({ type: SET_FILTER_BY, filterBy })
     }
 
-    function onRemoveToy(toyId) {
-        removeToy(toyId)
-            .then(() => {
-                showSuccessMsg('Toy removed')
-            })
-            .catch(err => {
-                console.log('err:', err)
-                showErrorMsg('Cannot remove toy ' + toyId)
-            })
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToy(toyId)
+            showSuccessMsg('Toy removed')
+        } catch (err) {
+            console.log('err:', err)
+            showErrorMsg('Cannot remove toy ' + toyId)
+        }
     }
 
-    function onAddToy() {
+    async function onAddToy() {
         const toysToSave = toyService.getToy()
-        saveToy(toysToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot add toy')
-            })
+        try {
+            const savedToy = await saveToy(toysToSave)
+            showSuccessMsg(`toy added (id: ${savedToy._id})`)
+        } catch (err) {
+            showErrorMsg('Cannot add toy')
+        }
     }
 
     return (
@@ -60,7 +58,7 @@ export function ToyIndex() {
                 <span style={{ color: '#FFD523' }}>A</span>
                 <span style={{ color: '#71EFA3' }}>p</span>
                 <span style={{ color: '#0F52BA' }}>p</span>
-            <img src={toy} alt="image-toy" className="toy-image" />
+                <img src={toy} alt="image-toy" className="toy-image" />
             </h1>
             <ToyFilter filterBy={filterBy} onSetFilterBy={setFilterBy} />
             <main>
