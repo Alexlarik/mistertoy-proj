@@ -1,6 +1,7 @@
 // import { utilService } from './util.service.js'
 // import fs from 'fs'
 // import mongodb from 'mongodb'
+// const { ObjectId } = mongodb
 // // import { storageService } from './async-storage.service.js'
 
 // // _createToys()
@@ -14,11 +15,12 @@
 //     getDefaultFilter,
 
 // }
-// const toys = utilService.readJsonFile('data/toy.json')
+// // const toys = utilService.readJsonFile('data/toy.json')
 // // For Debug (easy access from console):
 // // window.cs = toyService
 
-// function query(filterBy = {}) {
+//  async function query(filterBy = {}) {
+//     const collection = await dbService.getCollection('toy')
 //     let filteredToys = toys
 //     if (filterBy.txt) {
 //         const regExp = new RegExp(filterBy.txt, 'i')
