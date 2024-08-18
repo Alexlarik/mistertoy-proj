@@ -81,6 +81,7 @@ export async function addToyMsg(req, res) {
     const msg = {
       txt: req.body.txt,
       by: { _id, fullname },
+      createdAt: Date.now(),
     }
     const savedMsg = await toyService.addToyMsg(toyId, msg)
     res.json(savedMsg)

@@ -18,6 +18,7 @@ export const toyService = {
     save,
     getToy,
     getDefaultFilter,
+    addToyMsg
 
 }
 // For Debug (easy access from console):
@@ -50,6 +51,11 @@ function save(toy) {
         // console.log('Creating new toy:', toy)
         return httpService.post(BASE_URL, toy)
     }
+}
+
+async function addToyMsg(toyId, txt) {
+    const savedMsg = await httpService.post(`toy/${toyId}/msg`, { txt })
+    return savedMsg
 }
 
 function getToy() {

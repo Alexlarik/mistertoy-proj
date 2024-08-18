@@ -19,7 +19,8 @@ async function query(filterBy = {}) {
     var users = await collection.find(criteria).toArray()
     users = users.map(user => {
       delete user.password
-      user.createdAt = new ObjectId(user._id).getTimestamp()
+      user.isHappy = true
+      user.createdAt = user._id.getTimestamp()
       return user
     })
     return users
@@ -32,7 +33,17 @@ async function query(filterBy = {}) {
 async function getById(userId) {
   try {
     const collection = await dbService.getCollection('user')
-    const user = await collection.findOne({ _id: new ObjectId(userId) })
+    const user = await collection.findOne({ _id: ObjectId.createFromHexString(userId) })
+
+    const reviews = await reviewService.query({ byUserId: userId })
+    user.reviews = reviews.map(review => {
+      delete review.byUserId
+      delete review.toyId
+      delete review.byUser
+      delete review.toy.msgs
+      return review
+    })
+
     delete user.password
     return user
   } catch (err) {
@@ -64,7 +75,7 @@ async function remove(userId) {
 async function update(user) {
   try {
     const userToSave = {
-      _id: new ObjectId(user._id),
+      _id: ObjectId.createFromHexString(user._id),
       fullname: user.fullname,
       score: user.score,
     }
@@ -86,7 +97,7 @@ async function add(user) {
       imgUrl: user.imgUrl,
       score: 100,
       //isAdmin:false
-      isAdmin:true
+      isAdmin: true
     }
     const collection = await dbService.getCollection('user')
     await collection.insertOne(userToAdd)
